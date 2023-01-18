@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6404885712073705072}
   - component: {fileID: 6404885712073705075}
   - component: {fileID: 5187070054737285720}
-  - component: {fileID: 1484189525}
   - component: {fileID: 1484189521}
+  - component: {fileID: 7752936387549124582}
+  - component: {fileID: 1627114322}
   m_Layer: 3
   m_Name: Saw
   m_TagString: Untagged
@@ -108,32 +109,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1484189525
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404885712073705074}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0026493669, y: -0.0052984953}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.7066667, y: 1.7066667}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.9779841, y: 0.99388003}
-  m_EdgeRadius: 0
 --- !u!114 &1484189521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +121,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284c11bc687db0743a1329785b23de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 1927819653267124719, guid: 2b5d856d5e1ba7e48bbc0e703161401d, type: 3}
+  sawSpeed: 5
+--- !u!114 &7752936387549124582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6404885712073705074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947f659d3ed04144e8160f7d92b14476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1627114322
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6404885712073705074}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.64

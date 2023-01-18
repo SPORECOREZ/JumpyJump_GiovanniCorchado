@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class JumpyController : MonoBehaviour
 {
-    public float jumpSpeed = 4f;
+    public float jumpSpeed = 12f;
+    public float startTime = 0f;
+
+    public GameObject gameStart;
 
     private bool doubleJump;
 
@@ -22,6 +27,18 @@ public class JumpyController : MonoBehaviour
 
     void Update()
     {
+        startTime += Time.deltaTime;
+        if (startTime <= 2)
+        {
+            gameStart.gameObject.SetActive(true);
+            jumpSpeed = 0f;
+        }
+        if (startTime >= 3)
+        {
+            gameStart.gameObject.SetActive(false);
+            jumpSpeed = 12f;
+        }
+
         if (IsGrounded() && !Input.GetButton("Jump"))
         {
             doubleJump = false;
