@@ -5,19 +5,36 @@ using UnityEngine;
 public class SawSpawn : MonoBehaviour
 {
     public GameObject sawPrefab;
-    public float startTime = 0f;
 
     void Start()
     {
-        sawPrefab.gameObject.SetActive(false);
+        StartCoroutine(SpawnSaw1());
+        StartCoroutine(SpawnSaw2());
+        StartCoroutine(SpawnSaw3());
+        StartCoroutine(SpawnSaw4());
     }
 
-    void Update()
+    IEnumerator SpawnSaw1()
     {
-        startTime += Time.deltaTime;
-        if (startTime >= 3)
-        {
-            sawPrefab.gameObject.SetActive(true);
-        }
+        yield return new WaitForSeconds(2f);
+        Instantiate(sawPrefab, new Vector2(11,-3), Quaternion.identity);
+    }
+
+    IEnumerator SpawnSaw2()
+    {
+        yield return new WaitForSeconds(4f);
+        Instantiate(sawPrefab, new Vector2(11, 1), Quaternion.identity);
+    }
+
+    IEnumerator SpawnSaw3()
+    {
+        yield return new WaitForSeconds(6f);
+        Instantiate(sawPrefab, new Vector2(11,-3), Quaternion.identity);
+    }
+
+    IEnumerator SpawnSaw4()
+    {
+        yield return new WaitForSeconds(8f);
+        Instantiate(sawPrefab, new Vector2(11, 1), Quaternion.identity);
     }
 }
