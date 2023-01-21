@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 1729213246371760349}
   - component: {fileID: 1729213246371760348}
   - component: {fileID: 1659413690}
+  - component: {fileID: 1813238897733399121}
   m_Layer: 0
   m_Name: Jumpy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,21 +105,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   timeLeft: 14
+  timerToStop: {fileID: 1813238897733399121}
   gameStart: {fileID: 0}
   spacebar: {fileID: 0}
   gameLose: {fileID: 0}
   gameWin: {fileID: 0}
   jumpyLives: {fileID: 0}
   jumpyDeath: {fileID: 0}
-  audioSource: {fileID: 0}
-  musicSource: {fileID: 0}
-  gameBegin: {fileID: 8300000, guid: b3723ae04289cf44aaab8dac935e0f36, type: 3}
-  gameMusic: {fileID: 8300000, guid: 21838c0fba4d54245bee3aea130dfb26, type: 3}
-  winSound: {fileID: 8300000, guid: d2bb4ecbecdcbb74e8c3ceb02cc93c05, type: 3}
-  loseSound: {fileID: 8300000, guid: 822de267e5f44b448863d112e79b9d88, type: 3}
-  jumpyDies: {fileID: 8300000, guid: 9e141eca715aa1445b6818c64b900c0b, type: 3}
+  audioSource: {fileID: 1659413690}
   jumpyJump: {fileID: 8300000, guid: f7c679c30b0159f4ba7c6981c0b2b569, type: 3}
-  countdownTimer: {fileID: 0}
   playBlood: {fileID: 3474710774557965803, guid: 3accfa27c628bc844bdb0e16c3c2110a, type: 3}
   jumpy: {fileID: 1729213246371760338}
   groundCheck: {fileID: 1729213246922639446}
@@ -288,6 +283,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1813238897733399121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729213246371760342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb91cacede03d7341859ce6caff26234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownTimer: {fileID: 0}
+  timer: 0
+  jumpyWinsTimer: 0
+  audioSource: {fileID: 1659413690}
+  gameBegin: {fileID: 8300000, guid: b3723ae04289cf44aaab8dac935e0f36, type: 3}
+  winSound: {fileID: 8300000, guid: d2bb4ecbecdcbb74e8c3ceb02cc93c05, type: 3}
 --- !u!1 &1729213246922639447
 GameObject:
   m_ObjectHideFlags: 0

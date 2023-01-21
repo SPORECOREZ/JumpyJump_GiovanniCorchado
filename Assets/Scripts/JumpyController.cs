@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class JumpyController : MonoBehaviour
 {
     public float timer = 0f;
-    public float timeLeft = 14f;
     float jumpSpeed = 12f;
+
+    public CountdownTimer timerToStop;
 
     public static int jumpyHealth;
 
@@ -20,21 +22,13 @@ public class JumpyController : MonoBehaviour
     public GameObject jumpyDeath;
 
     public AudioSource audioSource;
-
-    public AudioClip gameBegin;
-    public AudioClip gameMusic;
-    public AudioClip winSound;
-    public AudioClip loseSound;
-    public AudioClip jumpyDies;
+    
     public AudioClip jumpyJump;
-
-    //private bool musicToggle = false;
-
-    [SerializeField] Text countdownTimer;
 
     public GameObject playBlood;
 
     private bool jumpyAlive = true;
+    private bool canJump;
     private bool doubleJump;
 
     private Animator animator;
@@ -61,19 +55,22 @@ public class JumpyController : MonoBehaviour
         timer += 1 * Time.deltaTime;
         if (timer <= 2)
         {
+            canJump = false;
             gameStart.gameObject.SetActive(true);
             spacebar.gameObject.SetActive(true);
             jumpSpeed = 0f;
         }
         if (timer >= 2)
         {
+            canJump = true;
             gameStart.gameObject.SetActive(false);
             spacebar.gameObject.SetActive(false);
             jumpSpeed = 12f;
         }
         if (timer > 12 && jumpyAlive == true)
         {
-            audioSource.PlayOneShot(loseSound);
+            canJump = false;
+            timerToStop.enabled = false;
             gameWin.gameObject.SetActive(true);
             jumpSpeed = 0f;
         }
@@ -82,19 +79,12 @@ public class JumpyController : MonoBehaviour
             gameWin.gameObject.SetActive(false);
         }
 
-        timeLeft -= 1 * Time.deltaTime;
-        if (timeLeft <= 0)
-        {
-            GameOver();
-            timeLeft = 0;
-        }
-
         if (IsGrounded() && !Input.GetButton("Jump"))
         {
             doubleJump = false;
         }
 
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") && canJump == true)
         {
             audioSource.PlayOneShot(jumpyJump);
 
@@ -127,16 +117,16 @@ public class JumpyController : MonoBehaviour
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", true);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-    }
-
-    public void GameOver()
-    {
-        Application.Quit();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -148,8 +138,8 @@ public class JumpyController : MonoBehaviour
             gameLose.gameObject.SetActive(true);
             jumpyDeath.gameObject.SetActive(true);
             jumpyLives.gameObject.SetActive(false);
-            Explode();
             Destroy(gameObject);
+            Explode();
         }
     }
 
