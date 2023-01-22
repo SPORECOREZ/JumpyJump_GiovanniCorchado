@@ -117,11 +117,6 @@ public class JumpyController : MonoBehaviour
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", true);
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
     }
 
     private bool IsGrounded()

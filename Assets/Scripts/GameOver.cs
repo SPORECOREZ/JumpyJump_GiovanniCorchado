@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    public float timeLeft = 14f;
+    void Start()
+    {
+        StartCoroutine(GameQuit());
+    }
 
     void Update()
     {
-        timeLeft -= 1 * Time.deltaTime;
-        if (timeLeft == 0)
-        {
-            GameQuit();
-            timeLeft = 0;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown("escape"))
         {
             Application.Quit();
+            Debug.Log("Escape");
         }
     }
 
-    public void GameQuit()
+    IEnumerator GameQuit()
     {
+        yield return new WaitForSeconds(14);
         Application.Quit();
+        Debug.Log("Quit");
     }
 }
